@@ -1,114 +1,114 @@
 {
-  "Psychology_for_Primary_School_Teachers-knowledge-single": {
-    "name": "Psychology_for_Primary_School_Teachers-knowledge-single",
-    "category": "knowledge-single"
+  "Psychology_for_Primary_School_Teachers-knowledge-单项选择题": {
+    "name": "Psychology_for_Primary_School_Teachers-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychology_for_Primary_School_Teachers-knowledge-multi": {
-    "name": "Psychology_for_Primary_School_Teachers-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychology_for_Primary_School_Teachers-knowledge-多项选择题": {
+    "name": "Psychology_for_Primary_School_Teachers-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychology_for_Primary_School_Teachers-case-single": {
-    "name": "Psychology_for_Primary_School_Teachers-case-single",
-    "category": "case-single"
+  "Psychology_for_Primary_School_Teachers-case-单项选择题": {
+    "name": "Psychology_for_Primary_School_Teachers-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "Psychology_for_Primary_School_Teachers-case-multi": {
-    "name": "Psychology_for_Primary_School_Teachers-case-multi",
-    "category": "case-multi"
+  "Psychology_for_Primary_School_Teachers-case-多项选择题": {
+    "name": "Psychology_for_Primary_School_Teachers-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "Psychology_for_Middle_School_Teachers-knowledge-single": {
-    "name": "Psychology_for_Middle_School_Teachers-knowledge-single",
-    "category": "knowledge-single"
+  "Psychology_for_Middle_School_Teachers-knowledge-单项选择题": {
+    "name": "Psychology_for_Middle_School_Teachers-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychology_for_Middle_School_Teachers-knowledge-multi": {
-    "name": "Psychology_for_Middle_School_Teachers-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychology_for_Middle_School_Teachers-knowledge-多项选择题": {
+    "name": "Psychology_for_Middle_School_Teachers-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychology_for_Middle_School_Teachers-case-single": {
-    "name": "Psychology_for_Middle_School_Teachers-case-single",
-    "category": "case-single"
+  "Psychology_for_Middle_School_Teachers-case-单项选择题": {
+    "name": "Psychology_for_Middle_School_Teachers-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "Psychology_for_Middle_School_Teachers-case-multi": {
-    "name": "Psychology_for_Middle_School_Teachers-case-multi",
-    "category": "case-multi"
+  "Psychology_for_Middle_School_Teachers-case-多项选择题": {
+    "name": "Psychology_for_Middle_School_Teachers-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "GEE-case-multi": {
-    "name": "GEE-case-multi",
-    "category": "case-multi"
+  "GEE-case-多项选择题": {
+    "name": "GEE-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "GEE-case-single": {
-    "name": "GEE-case-single",
-    "category": "case-single"
+  "GEE-case-单项选择题": {
+    "name": "GEE-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "GEE-knowledge-multi": {
-    "name": "GEE-knowledge-multi",
-    "category": "knowledge-multi"
+  "GEE-knowledge-多项选择题": {
+    "name": "GEE-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "GEE-knowledge-single": {
-    "name": "GEE-knowledge-single",
-    "category": "knowledge-single"
+  "GEE-knowledge-单项选择题": {
+    "name": "GEE-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychological_consultant_level_1-knowledge-multi": {
-    "name": "Psychological_consultant_level_1-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychological_consultant_level_1-knowledge-多项选择题": {
+    "name": "Psychological_consultant_level_1-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychological_consultant_level_1-knowledge-single": {
-    "name": "Psychological_consultant_level_1-knowledge-single",
-    "category": "knowledge-single"
+  "Psychological_consultant_level_1-knowledge-单项选择题": {
+    "name": "Psychological_consultant_level_1-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychology_for_Higher_Education_Teachers-knowledge-multi": {
-    "name": "Psychology_for_Higher_Education_Teachers-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychology_for_Higher_Education_Teachers-knowledge-多项选择题": {
+    "name": "Psychology_for_Higher_Education_Teachers-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychology_for_Higher_Education_Teachers-knowledge-single": {
-    "name": "Psychology_for_Higher_Education_Teachers-knowledge-single",
-    "category": "knowledge-single"
+  "Psychology_for_Higher_Education_Teachers-knowledge-单项选择题": {
+    "name": "Psychology_for_Higher_Education_Teachers-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychological_consultant_level_2-case-multi": {
-    "name": "Psychological_consultant_level_2-case-multi",
-    "category": "case-multi"
+  "Psychological_consultant_level_2-case-多项选择题": {
+    "name": "Psychological_consultant_level_2-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "Psychological_consultant_level_2-case-single": {
-    "name": "Psychological_consultant_level_2-case-single",
-    "category": "case-single"
+  "Psychological_consultant_level_2-case-单项选择题": {
+    "name": "Psychological_consultant_level_2-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "Psychological_consultant_level_2-knowledge-multi": {
-    "name": "Psychological_consultant_level_2-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychological_consultant_level_2-knowledge-多项选择题": {
+    "name": "Psychological_consultant_level_2-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychological_consultant_level_2-knowledge--single": {
-    "name": "Psychological_consultant_level_2-knowledge--single",
-    "category": "knowledge--single"
+  "Psychological_consultant_level_2-knowledge--单项选择题": {
+    "name": "Psychological_consultant_level_2-knowledge--单项选择题",
+    "category": "knowledge--单项选择题"
   },
-  "self_taught_examination-case-multi": {
-    "name": "self_taught_examination-case-multi",
-    "category": "case-multi"
+  "self_taught_examination-case-多项选择题": {
+    "name": "self_taught_examination-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "self_taught_examination-case-single": {
-    "name": "self_taught_examination-case-single",
-    "category": "case-single"
+  "self_taught_examination-case-单项选择题": {
+    "name": "self_taught_examination-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "self_taught_examination-knowledge-multi": {
-    "name": "self_taught_examination-knowledge-multi",
-    "category": "knowledge-multi"
+  "self_taught_examination-knowledge-多项选择题": {
+    "name": "self_taught_examination-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "self_taught_examination-knowledge-single": {
-    "name": "self_taught_examination-knowledge-single",
-    "category": "knowledge-single"
+  "self_taught_examination-knowledge-单项选择题": {
+    "name": "self_taught_examination-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   },
-  "Psychological_consultant_level_3-case-multi": {
-    "name": "Psychological_consultant_level_3-case-multi",
-    "category": "case-multi"
+  "Psychological_consultant_level_3-case-多项选择题": {
+    "name": "Psychological_consultant_level_3-case-多项选择题",
+    "category": "case-多项选择题"
   },
-  "Psychological_consultant_level_3-case-single": {
-    "name": "Psychological_consultant_level_3-case-single",
-    "category": "case-single"
+  "Psychological_consultant_level_3-case-单项选择题": {
+    "name": "Psychological_consultant_level_3-case-单项选择题",
+    "category": "case-单项选择题"
   },
-  "Psychological_consultant_level_3-knowledge-multi": {
-    "name": "Psychological_consultant_level_3-knowledge-multi",
-    "category": "knowledge-multi"
+  "Psychological_consultant_level_3-knowledge-多项选择题": {
+    "name": "Psychological_consultant_level_3-knowledge-多项选择题",
+    "category": "knowledge-多项选择题"
   },
-  "Psychological_consultant_level_3-knowledge-single": {
-    "name": "Psychological_consultant_level_3-knowledge-single",
-    "category": "knowledge-single"
+  "Psychological_consultant_level_3-knowledge-单项选择题": {
+    "name": "Psychological_consultant_level_3-knowledge-单项选择题",
+    "category": "knowledge-单项选择题"
   }
 }

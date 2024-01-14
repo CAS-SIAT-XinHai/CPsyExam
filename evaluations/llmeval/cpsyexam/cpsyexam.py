@@ -31,16 +31,16 @@ _URL = "cpsyexam.zip"
 
 
 task_list = [
-    'Psychology_for_Primary_School_Teachers-knowledge-single', 'Psychology_for_Primary_School_Teachers-knowledge-multi', 'Psychology_for_Primary_School_Teachers-case-single',
-    'Psychology_for_Primary_School_Teachers-case-multi', 'Psychology_for_Middle_School_Teachers-knowledge-single', 'Psychology_for_Middle_School_Teachers-knowledge-multi',
-    'Psychology_for_Middle_School_Teachers-case-single', 'Psychology_for_Middle_School_Teachers-case-multi', 'GEE-case-multi',
-    'GEE-case-single', 'GEE-knowledge-multi',
-    'GEE-knowledge-single', 'Psychological_consultant_level_1-knowledge-multi',
-    'Psychological_consultant_level_1-knowledge-single', 'Psychology for Higher Education Teachers-knowledge-multi', 'Psychology for Higher Education Teachers-knowledge-single',
-    'Psychological_consultant_level_2-case-multi', 'Psychological_consultant_level_2-case-single', 'Psychological_consultant_level_2-knowledge-multi',
-    'Psychological_consultant_level_2-knowledge--single', 'self_taught_examination-case-multi', 'self_taught_examination-case-single',
-    'self_taught_examination-knowledge-multi', 'self_taught_examination-knowledge-single', 'Psychological_consultant_level_3-case-multi',
-    'Psychological_consultant_level_3-case-single', 'Psychological_consultant_level_3-knowledge-multi', 'Psychological_consultant_level_3-knowledge-single'
+    'Psychology_for_Primary_School_Teachers-knowledge-单项选择题', 'Psychology_for_Primary_School_Teachers-knowledge-多项选择题', 'Psychology_for_Primary_School_Teachers-case-单项选择题',
+    'Psychology_for_Primary_School_Teachers-case-多项选择题', 'Psychology_for_Middle_School_Teachers-knowledge-单项选择题', 'Psychology_for_Middle_School_Teachers-knowledge-多项选择题',
+    'Psychology_for_Middle_School_Teachers-case-单项选择题', 'Psychology_for_Middle_School_Teachers-case-多项选择题', 'GEE-case-多项选择题',
+    'GEE-case-单项选择题', 'GEE-knowledge-多项选择题',
+    'GEE-knowledge-单项选择题', 'Psychological_consultant_level_1-knowledge-多项选择题',
+    'Psychological_consultant_level_1-knowledge-单项选择题', 'Psychology_for_Higher_Education_Teachers-knowledge-多项选择题', 'Psychology_for_Higher_Education_Teachers-knowledge-单项选择题',
+    'Psychological_consultant_level_2-case-多项选择题', 'Psychological_consultant_level_2-case-单项选择题', 'Psychological_consultant_level_2-knowledge-多项选择题',
+    'Psychological_consultant_level_2-knowledge--单项选择题', 'self_taught_examination-case-多项选择题', 'self_taught_examination-case-单项选择题',
+    'self_taught_examination-knowledge-多项选择题', 'self_taught_examination-knowledge-单项选择题', 'Psychological_consultant_level_3-case-多项选择题',
+    'Psychological_consultant_level_3-case-单项选择题', 'Psychological_consultant_level_3-knowledge-多项选择题', 'Psychological_consultant_level_3-knowledge-单项选择题'
 
 ]
 
