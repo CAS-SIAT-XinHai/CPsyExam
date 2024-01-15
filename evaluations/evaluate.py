@@ -18,17 +18,23 @@ from transformers import HfArgumentParser
 from transformers.utils import cached_file
 
 from llmtuner import ChatModel
+from llmtuner.data import get_template_and_fix_tokenizer
 # from llmtuner.eval.parser import get_eval_args
+from llmtuner.model import load_model_and_tokenizer, dispatch_model
 from llmtuner.eval.template import get_eval_template, EvalTemplate, register_eval_template
-from llmtuner.extras.misc import dispatch_model, get_logits_processor, parse_args
-from llmtuner.extras.template import get_template_and_fix_tokenizer
+from llmtuner.extras.misc import get_logits_processor
+# from llmtuner.extras.misc import dispatch_model, get_logits_processor, parse_args
+# from llmtuner.extras.template import get_template_and_fix_tokenizer
 from llmtuner.hparams import (
     ModelArguments,
     DataArguments,
     EvaluationArguments,
     FinetuningArguments, GeneratingArguments
 )
-from llmtuner.tuner.core import load_model_and_tokenizer
+from llmtuner.model.parser import _parse_args
+
+
+# from llmtuner.tuner.core import load_model_and_tokenizer
 
 
 @dataclass
@@ -85,7 +91,7 @@ def get_eval_args(
         FinetuningArguments,
         GeneratingArguments
     ))
-    model_args, data_args, eval_args, finetuning_args, generating_args = parse_args(parser, args)
+    model_args, data_args, eval_args, finetuning_args, generating_args = _parse_args(parser, args)
 
     if data_args.template is None:
         raise ValueError("Please specify which `template` to use.")
@@ -203,6 +209,7 @@ class MCQAEvaluator(ChatModel):
                 outputs += preds
 
             # replace those multiple option MCQA with generation
+            pbar.set_postfix_str(categorys[subject]["name"] + '{len(inputs)}')
             for i in trange(0, len(inputs), desc="Predicting batches", position=1, leave=False):
                 item = inputs[i]
                 target_data = dataset[self.data_args.split][i]
