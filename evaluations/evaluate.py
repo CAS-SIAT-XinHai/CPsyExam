@@ -208,7 +208,7 @@ class MCQAEvaluator(ChatModel):
                 outputs += preds
 
             # replace those multiple option MCQA with generation
-            pbar.set_postfix_str(categorys[subject]["name"] + '{len(inputs)}')
+            pbar.set_postfix_str(categorys[subject]["name"] + f'{len(inputs)}')
             for i in trange(0, len(inputs), desc="Predicting batches", position=1, leave=False):
                 item = inputs[i]
                 target_data = dataset[self.data_args.split][i]
