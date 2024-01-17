@@ -237,8 +237,7 @@ class MCQAEvaluator(ChatModel):
                 #     response_length += eos_index[0].item() if len(eos_index) else len(response_ids[i])
 
                 if target_data['question_type'] != self.eval_template.default:
-                    choices = [c for c in choices if c in response]
-                    outputs[i] = response
+                    outputs[i] = ''.join([c for c in choices if c in response])
             corrects = (np.array(outputs) == np.array(labels))
             category_name = categorys[subject]["category"]
             category_corrects[category_name] = np.concatenate([category_corrects[category_name], corrects], axis=0)
