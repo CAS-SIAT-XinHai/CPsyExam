@@ -12,15 +12,8 @@ import tiktoken
 import torch
 import transformers
 from datasets import load_dataset
-from tqdm import tqdm, trange
-from transformers import GenerationConfig
-from transformers import HfArgumentParser
-from transformers.utils import cached_file
-
 from llmtuner import ChatModel
 from llmtuner.data import get_template_and_fix_tokenizer
-# from llmtuner.eval.parser import get_eval_args
-from llmtuner.model import load_model_and_tokenizer, dispatch_model
 from llmtuner.eval.template import get_eval_template, EvalTemplate, register_eval_template
 from llmtuner.extras.misc import get_logits_processor
 # from llmtuner.extras.misc import dispatch_model, get_logits_processor, parse_args
@@ -31,7 +24,13 @@ from llmtuner.hparams import (
     EvaluationArguments,
     FinetuningArguments, GeneratingArguments
 )
+# from llmtuner.eval.parser import get_eval_args
+from llmtuner.model import load_model_and_tokenizer, dispatch_model
 from llmtuner.model.parser import _parse_args
+from tqdm import tqdm, trange
+from transformers import GenerationConfig
+from transformers import HfArgumentParser
+from transformers.utils import cached_file
 
 
 # from llmtuner.tuner.core import load_model_and_tokenizer
@@ -213,30 +212,25 @@ class MCQAEvaluator(ChatModel):
             for i in trange(0, len(inputs), desc="Predicting batches", position=1, leave=False):
                 item = inputs[i]
                 target_data = dataset[self.data_args.split][i]
-                generating_args = self.generating_args.to_dict()
-                generating_args.update(dict(
-                    num_return_sequences=1,
-                    eos_token_id=[self.tokenizer.eos_token_id] + self.tokenizer.additional_special_tokens_ids,
-                    pad_token_id=self.tokenizer.pad_token_id
-                ))
-
-                input_ids = torch.tensor([item['input_ids']], device=self.model.device)
-                gen_kwargs = dict(
-                    inputs=input_ids,
-                    generation_config=GenerationConfig(**generating_args),
-                    logits_processor=get_logits_processor()
-                )
-                prompt_length = len(item['input_ids'])
-                generate_output = self.model.generate(**gen_kwargs)
-                response_ids = generate_output[:, prompt_length:]
-                response = self.tokenizer.batch_decode(response_ids, skip_special_tokens=True,
-                                                       clean_up_tokenization_spaces=True)[0]
-                # response_length = 0
-                # for i in range(len(response_ids)):
-                #     eos_index = (response_ids[i] == self.tokenizer.eos_token_id).nonzero()
-                #     response_length += eos_index[0].item() if len(eos_index) else len(response_ids[i])
-
                 if target_data['question_type'] != self.eval_template.default:
+                    generating_args = self.generating_args.to_dict()
+                    generating_args.update(dict(
+                        num_return_sequences=1,
+                        eos_token_id=[self.tokenizer.eos_token_id] + self.tokenizer.additional_special_tokens_ids,
+                        pad_token_id=self.tokenizer.pad_token_id
+                    ))
+
+                    input_ids = torch.tensor([item['input_ids']], device=self.model.device)
+                    gen_kwargs = dict(
+                        inputs=input_ids,
+                        generation_config=GenerationConfig(**generating_args),
+                        logits_processor=get_logits_processor()
+                    )
+                    prompt_length = len(item['input_ids'])
+                    generate_output = self.model.generate(**gen_kwargs)
+                    response_ids = generate_output[:, prompt_length:]
+                    response = self.tokenizer.batch_decode(response_ids, skip_special_tokens=True,
+                                                           clean_up_tokenization_spaces=True)[0]
                     outputs[i] = ''.join([c for c in choices if c in response])
             corrects = (np.array(outputs) == np.array(labels))
             category_name = categorys[subject]["category"]
@@ -256,7 +250,7 @@ class MCQAEvaluator(ChatModel):
         if self.eval_args.save_dir is not None:
             os.makedirs(self.eval_args.save_dir, exist_ok=False)
             with open(os.path.join(self.eval_args.save_dir, "results.json"), "w", encoding="utf-8", newline="\n") as f:
-                json.dump(results, f, indent=2)
+                json.dump(results, f, indent=2, ensure_ascii=False)
 
             with open(os.path.join(self.eval_args.save_dir, "results.log"), "w", encoding="utf-8", newline="\n") as f:
                 f.write(score_info)
