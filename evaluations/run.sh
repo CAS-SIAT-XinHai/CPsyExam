@@ -56,6 +56,8 @@ elif [[ $MODEL == ChatGLM3 ]]; then
   TEMPLATE="chatglm3"
 elif [[ $MODEL == "Phi-1.5" ]]; then
   LORA_TARGET="Wqkv"
+elif [[ $MODEL == "Yi" ]]; then
+  TEMPLATE="yi"
 else
   echo "$MODEL is not supported"
   exit
