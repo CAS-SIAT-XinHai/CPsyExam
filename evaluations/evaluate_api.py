@@ -46,20 +46,19 @@ class APIEvaluator(Evaluator):
                 choices=choices
             )
 
-            print(query, resp, system, history)
-
             full_prompt = [
                               {"role": "system", "content": system}
                           ] + [
                               [
                                   {"role": "user", "content": user},
-                                  {"role": "assistant", "content": self.eval_template.answer + assistant}
+                                  {"role": "assistant", "content": assistant}
                               ] for user, assistant in history
                           ] + [
                               {"role": "user", "content": query},
                           ]
 
-            print(full_prompt)
+            if i == 0:
+                print(full_prompt)
 
             response = None
             timeout_counter = 0
