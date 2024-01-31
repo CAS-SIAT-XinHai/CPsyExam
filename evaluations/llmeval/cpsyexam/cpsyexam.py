@@ -31,16 +31,20 @@ _URL = "cpsyexam.zip"
 
 
 task_list = [
-    'Psychology_for_Primary_School_Teachers-knowledge-单项选择题', 'Psychology_for_Primary_School_Teachers-knowledge-多项选择题', 'Psychology_for_Primary_School_Teachers-case-单项选择题',
-    'Psychology_for_Primary_School_Teachers-case-多项选择题', 'Psychology_for_Middle_School_Teachers-knowledge-单项选择题', 'Psychology_for_Middle_School_Teachers-knowledge-多项选择题',
-    'Psychology_for_Middle_School_Teachers-case-单项选择题', 'Psychology_for_Middle_School_Teachers-case-多项选择题', 'GEE-case-多项选择题',
-    'GEE-case-单项选择题', 'GEE-knowledge-多项选择题',
-    'GEE-knowledge-单项选择题', 'Psychological_consultant_level_1-knowledge-多项选择题',
-    'Psychological_consultant_level_1-knowledge-单项选择题', 'Psychology_for_Higher_Education_Teachers-knowledge-多项选择题', 'Psychology_for_Higher_Education_Teachers-knowledge-单项选择题',
-    'Psychological_consultant_level_2-case-多项选择题', 'Psychological_consultant_level_2-case-单项选择题', 'Psychological_consultant_level_2-knowledge-多项选择题',
-    'Psychological_consultant_level_2-knowledge--单项选择题', 'self_taught_examination-case-多项选择题', 'self_taught_examination-case-单项选择题',
-    'self_taught_examination-knowledge-多项选择题', 'self_taught_examination-knowledge-单项选择题', 'Psychological_consultant_level_3-case-多项选择题',
-    'Psychological_consultant_level_3-case-单项选择题', 'Psychological_consultant_level_3-knowledge-多项选择题', 'Psychological_consultant_level_3-knowledge-单项选择题'
+    'CA-心理咨询-单项选择题','CA-心理咨询-多项选择题','CA-心理理论-单项选择题',
+    'CA-心理理论-多项选择题','CA-心理诊断-单项选择题','CA-心理诊断-多项选择题',
+    'KG-GEE-临床与咨询心理学-单项选择题','KG-GEE-临床与咨询心理学-多项选择题',
+    'KG-GEE-人格心理学-单项选择题','KG-GEE-人格心理学-多项选择题','KG-GEE-发展心理学-单项选择题',
+    'KG-GEE-发展心理学-多项选择题','KG-GEE-变态心理学-单项选择题','KG-GEE-变态心理学-多项选择题',
+    'KG-GEE-实验心理学-单项选择题','KG-GEE-实验心理学-多项选择题','KG-GEE-心理统计与测量-单项选择题',
+    'KG-GEE-心理统计与测量-多项选择题','KG-GEE-教育心理学-单项选择题','KG-GEE-教育心理学-多项选择题',
+    'KG-GEE-普通心理学-单项选择题','KG-GEE-普通心理学-多项选择题','KG-GEE-社会心理学-单项选择题',
+    'KG-GEE-社会心理学-多项选择题','KG-GEE-管理心理学-单项选择题','KG-GEE-管理心理学-多项选择题',
+    'KG-PCE-心理咨询师一级-单项选择题','KG-PCE-心理咨询师一级-多项选择题','KG-PCE-心理咨询师三级-单项选择题',
+    'KG-PCE-心理咨询师三级-多项选择题','KG-PCE-心理咨询师二级-单项选择题','KG-PCE-心理咨询师二级-多项选择题',
+    'KG-TQE-中学教师心理学-单项选择题','KG-TQE-中学教师心理学-多项选择题','KG-TQE-小学教师心理学-单项选择题',
+    'KG-TQE-小学教师心理学-多项选择题','KG-TQE-高等学校教师心理学-单项选择题','KG-TQE-高等学校教师心理学-多项选择题'
+
 
 ]
 
@@ -68,14 +72,20 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
         features = datasets.Features(
             {
                 "subject_name": datasets.Value("string"),
-                "question": datasets.Value("string"),
-                "answer": datasets.Value("string"),
                 "question_type": datasets.Value("string"),
-                "A": datasets.Value("string"),
-                "B": datasets.Value("string"),
-                "C": datasets.Value("string"),
-                "D": datasets.Value("string"),
-                "E": datasets.Value("string")
+                "kind": datasets.Value("string"),
+                "question": datasets.Value("string"),
+                "options":{
+                    "A": datasets.Value("string"),
+                    "B": datasets.Value("string"),
+                    "C": datasets.Value("string"),
+                    "D": datasets.Value("string"),
+                    "E": datasets.Value("string")
+                },
+                "answer": datasets.Value("string"),
+                "explaination":datasets.Value("string")
+
+
 
             }
         )
