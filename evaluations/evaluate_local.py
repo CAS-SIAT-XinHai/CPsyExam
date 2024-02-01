@@ -166,9 +166,11 @@ class LocalEvaluator(Evaluator):
             #     eos_index = (response_ids[i] == self.tokenizer.eos_token_id).nonzero()
             #     response_length += eos_index[0].item() if len(eos_index) else len(response_ids[i])
 
-            if target_data['question_type'] != self.default_question_type:
-                choices = [c for c in choices if c in response]
-                outputs[i] = response
+            question_type = target_data.get('question_type', self.default_question_type)
+            if question_type != self.default_question_type:
+                # choices = [c for c in choices if c in response]
+                ans_list = self.extract_ans(response)
+                outputs[i] = ''.join(ans_list)
         corrects = (np.array(outputs) == np.array(labels))
         return corrects, outputs
 
