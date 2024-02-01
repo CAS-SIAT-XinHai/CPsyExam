@@ -42,6 +42,7 @@ class APIEvaluator(Evaluator):
                 range(min(self.n_shot, len(dataset["train"]))))
             choices = [c for c in string.ascii_uppercase if c in dataset[self.split].features]
             row = dataset[self.split][i]
+            question_type = row.get('question_type', self.default_question_type)
 
             query, resp, system, history = self.format_example_with_choices(
                 target_data=row,
@@ -88,7 +89,7 @@ class APIEvaluator(Evaluator):
             else:
                 response_str = response['choices'][0]['message']['content']
 
-            ans_list = self.extract_ans(response_str)
+            ans_list = self.extract_ans(response_str, choices, is_single=question_type==self.default_question_type)
             outputs.append(''.join(ans_list))
             labels.append(resp)
         corrects = (np.array(outputs) == np.array(labels))

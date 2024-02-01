@@ -3,6 +3,7 @@ import os
 import re
 import string
 from abc import abstractmethod
+from collections import defaultdict
 from typing import Dict, Tuple
 from typing import List
 
@@ -132,35 +133,43 @@ class Evaluator:
     def exact_match(self, pred, target):
         return self.normalize_answer(pred) == self.normalize_answer(target)
 
-    def extract_ans(self, response_str):
-        pattern = [
-            r"^选([A-D])",
-            r"^选项([A-D])",
-            r"答案是\s?选?项?\s?([A-D])",
-            r"答案为\s?选?项?\s?([A-D])",
-            r"答案应为\s?选?项?\s?([A-D])",
-            r"答案选\s?选?项?\s?([A-D])",
-            r"答案是:\s?选?项?\s?([A-D])",
-            r"答案应该是:\s?选?项?\s?([A-D])",
-            r"正确的一项是\s?([A-D])",
-            r"答案为:\s?选?项?\s?([A-D])",
-            r"答案应为:\s?选?项?\s?([A-D])",
-            r"答案:\s?选?项?\s?([A-D])",
-            r"答案是：\s?选?项?\s?([A-D])",
-            r"答案应该是：\s?选?项?\s?([A-D])",
-            r"答案为：\s?选?项?\s?([A-D])",
-            r"答案应为：\s?选?项?\s?([A-D])",
-            r"答案：\s?选?项?\s?([A-D])",
-        ]
-        ans_list = []
-        if response_str[0] in ["A", 'B', 'C', 'D']:
-            ans_list.append(response_str[0])
-        for p in pattern:
-            if len(ans_list) == 0:
-                ans_list = re.findall(p, response_str)
-            else:
-                break
-        return ans_list
+    @staticmethod
+    def extract_ans(response_str, choices, is_single=True):
+        max_option = chr(ord("A") + len(choices) - 1)
+        if is_single:
+            pattern = [
+                rf"^选([A-{max_option}])",
+                rf"^选项([A-{max_option}])",
+                rf"答案是\s?选?项?\s?([A-{max_option}])",
+                rf"答案为\s?选?项?\s?([A-{max_option}])",
+                rf"答案应为\s?选?项?\s?([A-{max_option}])",
+                rf"答案选\s?选?项?\s?([A-{max_option}])",
+                rf"答案是:\s?选?项?\s?([A-{max_option}])",
+                rf"答案应该是:\s?选?项?\s?([A-{max_option}])",
+                rf"正确的一项是\s?([A-{max_option}])",
+                rf"答案为:\s?选?项?\s?([A-{max_option}])",
+                rf"答案应为:\s?选?项?\s?([A-{max_option}])",
+                rf"答案:\s?选?项?\s?([A-{max_option}])",
+                rf"答案是：\s?选?项?\s?([A-{max_option}])",
+                rf"答案应该是：\s?选?项?\s?([A-{max_option}])",
+                rf"答案为：\s?选?项?\s?([A-{max_option}])",
+                rf"答案应为：\s?选?项?\s?([A-{max_option}])",
+                rf"答案：\s?选?项?\s?([A-{max_option}])",
+            ]
+            ans_list = []
+            if response_str[0] in choices:
+                ans_list.append(response_str[0])
+            for p in pattern:
+                if len(ans_list) == 0:
+                    ans_list = re.findall(p, response_str)
+                else:
+                    break
+            return ans_list
+        else:
+            res = re.search(r"(答案|正确选项)(?:是|：|为|应该是|应该为)(.*?)(。|\.|$)", response_str, re.S)
+            if res:
+                return [x for x in res.group(2) if x in choices]
+            return [i for i in response_str if i in choices]
 
     def _save_results(self, category_corrects: Dict[str, np.ndarray], results: Dict[str, Dict[int, str]]) -> None:
         score_info = "\n".join([

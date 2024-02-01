@@ -143,33 +143,27 @@ class LocalEvaluator(Evaluator):
         for i in trange(0, len(inputs), desc="Predicting batches", position=1, leave=False):
             item = inputs[i]
             target_data = dataset[self.data_args.split][i]
-            generating_args = self.generating_args.to_dict()
-            generating_args.update(dict(
-                num_return_sequences=1,
-                eos_token_id=[self.tokenizer.eos_token_id] + self.tokenizer.additional_special_tokens_ids,
-                pad_token_id=self.tokenizer.pad_token_id
-            ))
-
-            input_ids = torch.tensor([item['input_ids']], device=self.model.device)
-            gen_kwargs = dict(
-                inputs=input_ids,
-                generation_config=GenerationConfig(**generating_args),
-                logits_processor=get_logits_processor()
-            )
-            prompt_length = len(item['input_ids'])
-            generate_output = self.model.generate(**gen_kwargs)
-            response_ids = generate_output[:, prompt_length:]
-            response = self.tokenizer.batch_decode(response_ids, skip_special_tokens=True,
-                                                   clean_up_tokenization_spaces=True)[0]
-            # response_length = 0
-            # for i in range(len(response_ids)):
-            #     eos_index = (response_ids[i] == self.tokenizer.eos_token_id).nonzero()
-            #     response_length += eos_index[0].item() if len(eos_index) else len(response_ids[i])
-
             question_type = target_data.get('question_type', self.default_question_type)
             if question_type != self.default_question_type:
-                # choices = [c for c in choices if c in response]
-                ans_list = self.extract_ans(response)
+                generating_args = self.generating_args.to_dict()
+                generating_args.update(dict(
+                    num_return_sequences=1,
+                    eos_token_id=[self.tokenizer.eos_token_id] + self.tokenizer.additional_special_tokens_ids,
+                    pad_token_id=self.tokenizer.pad_token_id
+                ))
+
+                input_ids = torch.tensor([item['input_ids']], device=self.model.device)
+                gen_kwargs = dict(
+                    inputs=input_ids,
+                    generation_config=GenerationConfig(**generating_args),
+                    logits_processor=get_logits_processor()
+                )
+                prompt_length = len(item['input_ids'])
+                generate_output = self.model.generate(**gen_kwargs)
+                response_ids = generate_output[:, prompt_length:]
+                response = self.tokenizer.batch_decode(response_ids, skip_special_tokens=True,
+                                                       clean_up_tokenization_spaces=True)[0]
+                ans_list = self.extract_ans(response, choices, is_single=False)
                 outputs[i] = ''.join(ans_list)
         corrects = (np.array(outputs) == np.array(labels))
         return corrects, outputs
