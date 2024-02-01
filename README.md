@@ -3,8 +3,8 @@
 # CPsyExam
 CPsyExam: A Chinese Benchmark for Evaluating Psychology using Examinations
 
-# Evaluation
-## Usage
+## Evaluation
+### Usage
 ```bash
 run_example.sh MODEL MODEL_NAME_OR_PATH/API_URL TASK SPLIT GPUS N_SHOT
 ```
@@ -21,11 +21,11 @@ run_example.sh MODEL MODEL_NAME_OR_PATH/API_URL TASK SPLIT GPUS N_SHOT
 
 - **N_SHOT**:The number of shots to use for few-shot learning evaluations. Set this to 0 to disable few-shot learning.
 
-## Local Evaluation Example
+### Local Evaluation Example
 ```bash
 bash evaluations/run_example.sh ChatGLM2 /data/pretrained_models/THUDM/chatglm2-6b ceval validation 0 0
 ```
-## Online Evaluation Example
+### Online Evaluation Example
 ```bash
 bash evaluations/run_example.sh ERNIE-Bot-turbo https://one-api.chillway.me/v1/ ceval validation 0 0
 ```
