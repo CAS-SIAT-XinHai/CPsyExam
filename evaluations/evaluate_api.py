@@ -1,11 +1,12 @@
 # Inspired by: https://github.com/hendrycks/test/blob/master/evaluate_flan.py
 import argparse
+import json
 import os
 import string
 from time import sleep
 
 import numpy as np
-import openai
+from openai import OpenAI
 from datasets import load_dataset
 from tqdm import trange
 
@@ -15,8 +16,11 @@ from utils import Evaluator
 class APIEvaluator(Evaluator):
     def __init__(self, args):
         super().__init__(args.lang, args.task, args.task_dir, args.save_dir)
-        openai.api_key = os.getenv("API_KEY")
-        openai.api_base = args.api_base
+        self.client = OpenAI(
+            # This is the default and can be omitted
+            api_key=os.environ.get("API_KEY"),
+            base_url=args.api_base
+        )
         self.split = args.split
         self.n_shot = args.n_shot
         self.task_dir = args.task_dir
@@ -32,6 +36,7 @@ class APIEvaluator(Evaluator):
         )
 
         inputs, outputs, labels = [], [], []
+        
         for i in trange(len(dataset[self.split]), desc="Formatting batches", position=1, leave=False):
             support_set = dataset["train"].shuffle().select(
                 range(min(self.n_shot, len(dataset["train"]))))
@@ -57,18 +62,20 @@ class APIEvaluator(Evaluator):
                               {"role": "user", "content": query},
                           ]
 
-            if i == 0:
-                print(full_prompt)
+            # if i == 0:
+            #     print(full_prompt)
 
             response = None
             timeout_counter = 0
             while response is None and timeout_counter <= 30:
                 try:
-                    response = openai.ChatCompletion.create(
-                        model=self.model_name,
+                    response = self.client.chat.completions.create(
                         messages=full_prompt,
+                        model=self.model_name,
                         temperature=0.
                     )
+                    # print(response.model_dump_json())
+                    response=json.loads(response.model_dump_json())
                 except Exception as msg:
                     if "timeout=600" in str(msg):
                         timeout_counter += 1
@@ -110,4 +117,5 @@ if __name__ == "__main__":
     parser.add_argument("--save_dir", type=str)
     parser.add_argument("--cuda_device", type=str)
     args = parser.parse_args()
+
     main(args)

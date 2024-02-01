@@ -68,7 +68,7 @@ class Evaluator:
             # revision=self.model_args.model_revision
         )
 
-        print(mapping)
+        # print(mapping)
 
         with open(mapping, "r", encoding="utf-8") as f:
             categorys: Dict[str, Dict[str, str]] = json.load(f)
