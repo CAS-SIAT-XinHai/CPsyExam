@@ -29,22 +29,20 @@ _LICENSE = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Internatio
 
 _URL = "cpsyexam.zip"
 
-
 task_list = [
-    'CA-心理咨询-单项选择题','CA-心理咨询-多项选择题','CA-心理理论-单项选择题',
-    'CA-心理理论-多项选择题','CA-心理诊断-单项选择题','CA-心理诊断-多项选择题',
-    'KG-GEE-临床与咨询心理学-单项选择题','KG-GEE-临床与咨询心理学-多项选择题',
-    'KG-GEE-人格心理学-单项选择题','KG-GEE-人格心理学-多项选择题','KG-GEE-发展心理学-单项选择题',
-    'KG-GEE-发展心理学-多项选择题','KG-GEE-变态心理学-单项选择题','KG-GEE-变态心理学-多项选择题',
-    'KG-GEE-实验心理学-单项选择题','KG-GEE-实验心理学-多项选择题','KG-GEE-心理统计与测量-单项选择题',
-    'KG-GEE-心理统计与测量-多项选择题','KG-GEE-教育心理学-单项选择题','KG-GEE-教育心理学-多项选择题',
-    'KG-GEE-普通心理学-单项选择题','KG-GEE-普通心理学-多项选择题','KG-GEE-社会心理学-单项选择题',
-    'KG-GEE-社会心理学-多项选择题','KG-GEE-管理心理学-单项选择题','KG-GEE-管理心理学-多项选择题',
-    'KG-PCE-心理咨询师一级-单项选择题','KG-PCE-心理咨询师一级-多项选择题','KG-PCE-心理咨询师三级-单项选择题',
-    'KG-PCE-心理咨询师三级-多项选择题','KG-PCE-心理咨询师二级-单项选择题','KG-PCE-心理咨询师二级-多项选择题',
-    'KG-TQE-中学教师心理学-单项选择题','KG-TQE-中学教师心理学-多项选择题','KG-TQE-小学教师心理学-单项选择题',
-    'KG-TQE-小学教师心理学-多项选择题','KG-TQE-高等学校教师心理学-单项选择题','KG-TQE-高等学校教师心理学-多项选择题'
-
+    'CA-心理咨询-单项选择题', 'CA-心理咨询-多项选择题', 'CA-心理理论-单项选择题',
+    'CA-心理理论-多项选择题', 'CA-心理诊断-单项选择题', 'CA-心理诊断-多项选择题',
+    'KG-GEE-临床与咨询心理学-单项选择题', 'KG-GEE-临床与咨询心理学-多项选择题',
+    'KG-GEE-人格心理学-单项选择题', 'KG-GEE-人格心理学-多项选择题', 'KG-GEE-发展心理学-单项选择题',
+    'KG-GEE-发展心理学-多项选择题', 'KG-GEE-变态心理学-单项选择题', 'KG-GEE-变态心理学-多项选择题',
+    'KG-GEE-实验心理学-单项选择题', 'KG-GEE-实验心理学-多项选择题', 'KG-GEE-心理统计与测量-单项选择题',
+    'KG-GEE-心理统计与测量-多项选择题', 'KG-GEE-教育心理学-单项选择题', 'KG-GEE-教育心理学-多项选择题',
+    'KG-GEE-普通心理学-单项选择题', 'KG-GEE-普通心理学-多项选择题', 'KG-GEE-社会心理学-单项选择题',
+    'KG-GEE-社会心理学-多项选择题', 'KG-GEE-管理心理学-单项选择题', 'KG-GEE-管理心理学-多项选择题',
+    'KG-PCE-心理咨询师一级-单项选择题', 'KG-PCE-心理咨询师一级-多项选择题', 'KG-PCE-心理咨询师三级-单项选择题',
+    'KG-PCE-心理咨询师三级-多项选择题', 'KG-PCE-心理咨询师二级-单项选择题', 'KG-PCE-心理咨询师二级-多项选择题',
+    'KG-TQE-中学教师心理学-单项选择题', 'KG-TQE-中学教师心理学-多项选择题', 'KG-TQE-小学教师心理学-单项选择题',
+    'KG-TQE-小学教师心理学-多项选择题', 'KG-TQE-高等学校教师心理学-单项选择题', 'KG-TQE-高等学校教师心理学-多项选择题'
 
 ]
 
@@ -75,18 +73,13 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
                 "question_type": datasets.Value("string"),
                 "kind": datasets.Value("string"),
                 "question": datasets.Value("string"),
-                "options":{
-                    "A": datasets.Value("string"),
-                    "B": datasets.Value("string"),
-                    "C": datasets.Value("string"),
-                    "D": datasets.Value("string"),
-                    "E": datasets.Value("string")
-                },
+                "A": datasets.Value("string"),
+                "B": datasets.Value("string"),
+                "C": datasets.Value("string"),
+                "D": datasets.Value("string"),
+                "E": datasets.Value("string"),
                 "answer": datasets.Value("string"),
-                "explaination":datasets.Value("string")
-
-
-
+                "explanation": datasets.Value("string")
             }
         )
         return datasets.DatasetInfo(
@@ -113,7 +106,7 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
                 name=datasets.Split.VALIDATION,
                 gen_kwargs={
                     "filepath": os.path.join(
-                        data_dir, "validation", f"{task_name}.json"
+                        data_dir, "dev", f"{task_name}.json"
                     ),
                 },
             ),
@@ -121,14 +114,18 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
                     "filepath": os.path.join(
-                        data_dir, "dev", f"{task_name}.json"
+                        data_dir, "train", f"{task_name}.json"
                     ),
                 },
             )
         ]
 
     def _generate_examples(self, filepath):
+        print(filepath)
         if os.path.isfile(filepath):
             with open(filepath, encoding="utf-8") as f:
                 for key, instance in enumerate(json.load(f)):
+                    options = instance.pop("options", {})
+                    instance.update(options)
+                    print(instance)
                     yield key, instance
