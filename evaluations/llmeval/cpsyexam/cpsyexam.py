@@ -46,6 +46,11 @@ task_list = [
 
 ]
 
+question_type_mapping = {
+    'single': '单项选择题',
+    'multi': '多项选择题',
+}
+
 
 class CPsyExamConfig(datasets.BuilderConfig):
     """BuilderConfig for SQUAD."""
@@ -121,11 +126,10 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
         ]
 
     def _generate_examples(self, filepath):
-        print(filepath)
         if os.path.isfile(filepath):
             with open(filepath, encoding="utf-8") as f:
                 for key, instance in enumerate(json.load(f)):
                     options = instance.pop("options", {})
+                    instance['question_type'] = question_type_mapping[instance['question_type']]
                     instance.update(options)
-                    print(instance)
                     yield key, instance
