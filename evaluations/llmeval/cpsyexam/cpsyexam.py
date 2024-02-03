@@ -83,6 +83,7 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
     def _info(self):
         features = datasets.Features(
             {
+                "id": datasets.Value("string"),
                 "subject_name": datasets.Value("string"),
                 "question_type": datasets.Value("string"),
                 "kind": datasets.Value("string"),
