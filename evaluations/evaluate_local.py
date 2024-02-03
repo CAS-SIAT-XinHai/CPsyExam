@@ -121,8 +121,8 @@ class LocalEvaluator(Evaluator):
 
             query = query + self.eval_template.answer
 
-            if i == 0:
-                print(query, resp, history)
+            # if i == 0:
+            #     print(query, resp, history)
 
             input_ids, _ = self.template.encode_oneturn(
                 tokenizer=self.tokenizer, query=query, resp=resp, history=history

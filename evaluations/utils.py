@@ -35,7 +35,7 @@ register_eval_template(
     ## Initialization
     作为角色 <Role>，严格遵守 <Rules>，请解答以下关于“{subject}”考试的{question_type}题。请利用您的专业知识，仔细分析每个选项，并选择最符合心理学原理和临床经验的答案。我们依赖您的专业判断，以确保选择最准确、最客观的答案。
 
-    答案格式为“答案：{您选择的答案}”。\n\n
+    答案格式为“答案：{{您选择的答案}}”。\n\n
     ''',
     # system="以下是中国关于{subject}考试的{question_type}，请选出其中的正确答案。\n\n",
     choice="\n{choice}. {content}",
