@@ -47,7 +47,7 @@ elif [[ $MODEL == InternLM ]]; then
   TEMPLATE="intern"
 elif [[ $MODEL == Qwen ]]; then
   LORA_TARGET="c_attn"
-  TEMPLATE="chatml"
+  TEMPLATE="qwen"
 elif [[ $MODEL == XVERSE ]]; then
   TEMPLATE="xverse"
 elif [[ $MODEL == ChatGLM2 ]]; then
