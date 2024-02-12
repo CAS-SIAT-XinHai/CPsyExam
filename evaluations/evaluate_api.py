@@ -10,7 +10,7 @@ from openai import OpenAI
 from datasets import load_dataset
 from tqdm import trange
 
-from utils import Evaluator
+from cpsyexam.utils import Evaluator
 
 
 class APIEvaluator(Evaluator):
@@ -47,7 +47,7 @@ class APIEvaluator(Evaluator):
             query, resp, system, history = self.format_example_with_choices(
                 target_data=row,
                 support_set=support_set,
-                subject_name=subject_name,
+                subject_name=row.get('subject_name', subject_name),
                 # use_history=True,
                 choices=choices
             )

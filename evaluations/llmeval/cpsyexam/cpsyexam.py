@@ -143,3 +143,5 @@ class CPsyExam(datasets.GeneratorBasedBuilder):
                     instance['question_type'] = question_type_mapping[instance['question_type']]
                     instance.update(options)
                     yield key, instance
+        else:
+            print(f'{filepath} does not exist!')

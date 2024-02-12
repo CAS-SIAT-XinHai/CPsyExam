@@ -3,7 +3,6 @@ import os
 import re
 import string
 from abc import abstractmethod
-from collections import defaultdict
 from typing import Dict, Tuple
 from typing import List
 
@@ -44,7 +43,7 @@ register_eval_template(
 )
 
 
-class Evaluator:
+class Reader:
     def __init__(self, lang, task, task_dir, save_dir):
         self.task = task
         self.task_dir = task_dir
@@ -75,10 +74,14 @@ class Evaluator:
             choices
     ) -> Tuple[str, str, List[Tuple[str, str]]]:
         query, resp = self.parse_example_with_choices(target_data, choices)
-        history = [self.parse_example_with_choices(support_set[k], choices, with_answer=True) for k in range(len(support_set))]
+        history = [self.parse_example_with_choices(support_set[k], choices, with_answer=True) for k in
+                   range(len(support_set))]
         question_type = target_data.get('question_type', self.default_question_type)
         system = self.eval_template.system.format(subject=subject_name, question_type=question_type)
         return query.strip(), resp, system, history
+
+
+class Evaluator(Reader):
 
     def eval(self) -> None:
         mapping = cached_file(
