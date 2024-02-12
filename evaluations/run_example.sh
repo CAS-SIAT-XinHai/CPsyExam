@@ -99,7 +99,7 @@ if [ "$SCRIPT" == "evaluate_local.py" ]; then
     --batch_size 4
 else
   # export API_KEY=xxxxx
-  CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src python "${WORK_DIR}"/evaluations/$SCRIPT \
+  CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src:${WORK_DIR}/src python "${WORK_DIR}"/evaluations/$SCRIPT \
     --task "$TASK" \
     --task_dir "${WORK_DIR}"/evaluations/llmeval \
     --split "$SPLIT" \
