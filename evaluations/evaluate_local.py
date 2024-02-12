@@ -19,7 +19,7 @@ from llmtuner.extras.misc import get_logits_processor
 from llmtuner.hparams import DataArguments, EvaluationArguments, FinetuningArguments, GeneratingArguments, \
     ModelArguments
 from llmtuner.model import load_model_and_tokenizer, dispatch_model
-from llmtuner.model.parser import _parse_args
+from llmtuner.hparams.parser import _parse_args
 from cpsyexam.utils import Evaluator
 
 
