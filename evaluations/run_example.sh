@@ -50,6 +50,9 @@ elif [[ $MODEL == Qwen ]]; then
   TEMPLATE="qwen"
 elif [[ $MODEL == XVERSE ]]; then
   TEMPLATE="xverse"
+elif [[ $MODEL == ChatGLM ]]; then
+  LORA_TARGET="query_key_value"
+  TEMPLATE="chatglm"
 elif [[ $MODEL == ChatGLM2 ]]; then
   LORA_TARGET="query_key_value"
   TEMPLATE="chatglm2"
@@ -65,6 +68,10 @@ elif [[ $MODEL == "ERNIE-Bot-turbo" ]]; then
 elif [[ $MODEL == "chatglm_turbo" ]]; then
   SCRIPT=evaluate_api.py
 elif [[ $MODEL == "gpt-3.5-turbo" ]]; then
+  SCRIPT=evaluate_api.py
+elif [[ $MODEL == "gpt-4" ]]; then
+  SCRIPT=evaluate_api.py
+elif [[ $MODEL == "gpt-4-0125-preview" ]]; then
   SCRIPT=evaluate_api.py
 else
   echo "$MODEL is not supported"
