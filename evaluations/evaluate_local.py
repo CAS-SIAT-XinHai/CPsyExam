@@ -20,7 +20,7 @@ from llmtuner.hparams import DataArguments, EvaluationArguments, FinetuningArgum
     ModelArguments
 from llmtuner.model import load_model_and_tokenizer, dispatch_model
 from llmtuner.model.parser import _parse_args
-from utils import Evaluator
+from cpsyexam.utils import Evaluator
 
 
 def get_eval_args(
@@ -101,10 +101,11 @@ class LocalEvaluator(Evaluator):
             support_set = dataset["train"].shuffle().select(
                 range(min(self.eval_args.n_shot, len(dataset["train"]))))
             choices = [c for c in string.ascii_uppercase if c in dataset[self.data_args.split].features]
+            row = dataset[self.data_args.split][i]
             query, resp, system, history = self.format_example_with_choices(
-                target_data=dataset[self.data_args.split][i],
+                target_data=row,
                 support_set=support_set,
-                subject_name=subject_name,
+                subject_name=row.get('subject_name', subject_name),
                 # use_history=self.template.use_history,
                 choices=choices
             )

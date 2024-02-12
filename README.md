@@ -29,3 +29,10 @@ bash evaluations/run_example.sh ChatGLM2 /data/pretrained_models/THUDM/chatglm2-
 ```bash
 bash evaluations/run_example.sh ERNIE-Bot-turbo https://one-api.chillway.me/v1/ ceval validation 0 0
 ```
+
+## SFT
+### SFT Data Preparation
+
+```bash
+PYTHONPATH=../related_repos/LLaMA-Factory/src:../src python cpsyexam_to_sft.py --task cpsyexam --task_dir <llmeval_path> --split train  --save_dir ../data --qa_file <qa_train_path>/cpsyexam_qa.json
+```
