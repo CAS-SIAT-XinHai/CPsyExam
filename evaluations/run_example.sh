@@ -69,6 +69,8 @@ elif [[ $MODEL == "chatglm_turbo" ]]; then
   SCRIPT=evaluate_api.py
 elif [[ $MODEL == "gpt-3.5-turbo" ]]; then
   SCRIPT=evaluate_api.py
+elif [[ $MODEL == "gpt-3.5-turbo-16k" ]]; then
+  SCRIPT=evaluate_api.py
 elif [[ $MODEL == "gpt-4" ]]; then
   SCRIPT=evaluate_api.py
 elif [[ $MODEL == "gpt-4-0125-preview" ]]; then
