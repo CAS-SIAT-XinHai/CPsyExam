@@ -86,7 +86,7 @@ exec &> >(tee -a "$log_file")
 
 #    --checkpoint_dir path_to_checkpoint \
 if [ "$SCRIPT" == "evaluate_local.py" ]; then
-  CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src:${WORK_DIR}/src python "${WORK_DIR}"/evaluations/$SCRIPT \
+  HF_DATASETS_CACHE=${OUTPUT_DIR}/cache CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src:${WORK_DIR}/src python "${WORK_DIR}"/evaluations/$SCRIPT \
     --model_name_or_path "$MODEL_NAME_OR_PATH" \
     --finetuning_type full \
     --template $TEMPLATE \
@@ -99,7 +99,7 @@ if [ "$SCRIPT" == "evaluate_local.py" ]; then
     --batch_size 4
 else
   # export API_KEY=xxxxx
-  CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src:${WORK_DIR}/src python "${WORK_DIR}"/evaluations/$SCRIPT \
+  HF_DATASETS_CACHE=${OUTPUT_DIR}/cache CUDA_VISIBLE_DEVICES=$GPUS PYTHONPATH=${WORK_DIR}/related_repos/LLaMA-Factory/src:${WORK_DIR}/src python "${WORK_DIR}"/evaluations/$SCRIPT \
     --task "$TASK" \
     --task_dir "${WORK_DIR}"/evaluations/llmeval \
     --split "$SPLIT" \

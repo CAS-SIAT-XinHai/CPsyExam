@@ -19,7 +19,7 @@ from llmtuner.extras.misc import get_logits_processor
 from llmtuner.hparams import DataArguments, EvaluationArguments, FinetuningArguments, GeneratingArguments, \
     ModelArguments
 from llmtuner.model import load_model_and_tokenizer, dispatch_model
-from llmtuner.hparams.parser import _parse_args
+from llmtuner.model.parser import _parse_args
 from cpsyexam.utils import Evaluator
 
 
@@ -89,7 +89,6 @@ class LocalEvaluator(Evaluator):
         return [chr(ord("A") + offset.item()) for offset in torch.argmax(choice_probs, dim=-1)]
 
     def eval_subject(self, subject, subject_name):
-
         dataset = load_dataset(
             path=os.path.join(self.eval_args.task_dir, self.eval_args.task),
             name=subject,

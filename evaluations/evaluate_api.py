@@ -74,7 +74,7 @@ class APIEvaluator(Evaluator):
                         model=self.model_name,
                         temperature=0.
                     )
-                    # print(response.model_dump_json())
+                    # print(response)
                     response=json.loads(response.model_dump_json())
                 except Exception as msg:
                     if "timeout=600" in str(msg):
