@@ -67,7 +67,7 @@ class APIEvaluator(Evaluator):
 
             response = None
             timeout_counter = 0
-            while response is None and timeout_counter <= 30:
+            while response is None and timeout_counter <= 100:
                 try:
                     response = self.client.chat.completions.create(
                         messages=full_prompt,
@@ -76,17 +76,17 @@ class APIEvaluator(Evaluator):
                     )
                     # print(response)
                     response=json.loads(response.model_dump_json())
+                    if response!=None:
+                        response_str = response['choices'][0]['message']['content']
                 except Exception as msg:
                     if "timeout=600" in str(msg):
                         timeout_counter += 1
+                    print(response)
                     print(msg)
                     sleep(5)
                     continue
 
-            if response == None:
-                response_str = ""
-            else:
-                response_str = response['choices'][0]['message']['content']
+                
 
             ans_list = self.extract_ans(response_str, choices, is_single=question_type==self.default_question_type)
             outputs.append(''.join(ans_list))
