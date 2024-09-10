@@ -74,7 +74,7 @@ bash evaluations/run_example.sh ChatGLM2 /data/pretrained_models/THUDM/chatglm2-
 bash evaluations/run_example.sh ERNIE-Bot-turbo https://your-openai-proxy.com ceval validation 0 0
 ```
 ### LeaderBoard
-If you are interesting in add your score to our leaderboard, please send your test answer to my [email](mailto:cpsyexam.0930b@slmail.me), Thank you.
+If you are interesting in add your score to our leaderboard, please send your test answer to my email[cpsyexam.0930b@slmail.me](mailto:cpsyexam.0930b@slmail.me), Thank you.
 
 ## SFT
 ### SFT Data Preparation
