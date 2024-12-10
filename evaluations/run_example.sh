@@ -11,6 +11,14 @@ N_SHOT=$6
 
 OUTPUT_DIR="${WORK_DIR}"/output/$(uuidgen)
 
+# Check if model path exists for local models
+if [ "$SCRIPT" == "evaluate_local.py" ]; then
+  if [ ! -d "$MODEL_NAME_OR_PATH" ]; then
+    echo "Error: Model path '$MODEL_NAME_OR_PATH' does not exist or is not a directory"
+    exit 1
+  fi
+fi
+
 # Set template based on model
 case $MODEL in
   "LLaMA-2")
@@ -102,4 +110,4 @@ else
     --api_base "$MODEL_NAME_OR_PATH"
 fi
 
-echo "$log_file"
+echo "Results saved to: $log_file"
