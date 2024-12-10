@@ -1,8 +1,8 @@
 # CPsyExam
 
 ## News
-- **December 9, 2023**: Official website launched! Visit [http://cpsyexam.xinhai.co](http://cpsyexam.xinhai.co) for more information and updates.
-- **November 30, 2023**: Our paper "CPsyExam" has been accepted by COLING 2024! 🎉
+- **December 9, 2024**: Official website launched! Visit [http://cpsyexam.xinhai.co](http://cpsyexam.xinhai.co) for more information and updates.
+- **November 30, 2024**: Our paper "CPsyExam" has been accepted by COLING 2025! 🎉
 - **Dataset**: Available on Hugging Face at [CAS-SIAT-XinHai/CPsyExam](https://huggingface.co/datasets/CAS-SIAT-XinHai/CPsyExam)
 
 ![xinhai-cpsyexam](https://github.com/CAS-SIAT-XinHai/CPsyExam/assets/2136700/e2dd98ed-7090-47c7-aeab-cf58dcb23500)
