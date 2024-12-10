@@ -1,7 +1,7 @@
 # CPsyExam
 
 ## News
-- **December 9, 2024**: Official website launched! Visit [http://cpsyexam.xinhai.co](http://cpsyexam.xinhai.co) for more information and updates.
+- **December 9, 2024**: Official website launched! Visit [https://cpsyexam.xinhai.co](https://cpsyexam.xinhai.co) for more information and updates.
 - **November 30, 2024**: Our paper "CPsyExam: Chinese Benchmark for Evaluating Psychology using Examinations" has been accepted by COLING 2025! 🎉
 - **Dataset**: Available on Hugging Face at [CAS-SIAT-XinHai/CPsyExam](https://huggingface.co/datasets/CAS-SIAT-XinHai/CPsyExam)
 
@@ -10,7 +10,7 @@
 
 
 ## Leaderboard
-Check out our current leaderboard at [http://cpsyexam.xinhai.co/leaderboard](http://cpsyexam.xinhai.co/leaderboard)
+Check out our current leaderboard at [https://cpsyexam.xinhai.co/leaderboard](https://cpsyexam.xinhai.co/leaderboard)
 
 ## Evaluation
 ### Usage
@@ -85,7 +85,7 @@ This will combine all result files that follow the pattern `results_cpsyexam_*.j
 ### Submission
 To submit your results:
 1. Merge your evaluation results using the instructions in the [Merging Results](#merging-results) section
-2. Visit our website [http://cpsyexam.xinhai.co](http://cpsyexam.xinhai.co) to submit your results
+2. Visit our website [https://cpsyexam.xinhai.co](https://cpsyexam.xinhai.co) to submit your results
 
 ## SFT
 ### SFT Data Preparation
