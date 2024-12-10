@@ -2,10 +2,12 @@
 
 ## News
 - **December 9, 2024**: Official website launched! Visit [http://cpsyexam.xinhai.co](http://cpsyexam.xinhai.co) for more information and updates.
-- **November 30, 2024**: Our paper "CPsyExam" has been accepted by COLING 2025! 🎉
+- **November 30, 2024**: Our paper "CPsyExam: Chinese Benchmark for Evaluating Psychology using Examinations" has been accepted by COLING 2025! 🎉
 - **Dataset**: Available on Hugging Face at [CAS-SIAT-XinHai/CPsyExam](https://huggingface.co/datasets/CAS-SIAT-XinHai/CPsyExam)
 
 ![xinhai-cpsyexam](https://github.com/CAS-SIAT-XinHai/CPsyExam/assets/2136700/e2dd98ed-7090-47c7-aeab-cf58dcb23500)
+
+
 
 ## Leaderboard
 Check out our current leaderboard at [http://cpsyexam.xinhai.co/leaderboard](http://cpsyexam.xinhai.co/leaderboard)
@@ -94,4 +96,18 @@ PYTHONPATH=../related_repos/LLaMA-Factory/src:../src python cpsyexam_to_sft.py \
   --split train \
   --save_dir ../data \
   --qa_file <qa_train_path>/cpsyexam_qa.json
+```
+
+## Citation
+If you find this work helpful, please cite our paper:
+```bibtex
+@misc{CPsyExam benchmark,
+  title={CPsyExam: Chinese Benchmark for Evaluating Psychology using Examinations},
+  author={Jiahao Zhao, Jingwei Zhu, Minghuan Tan, Min Yang, Di Yang, 
+          Chenhao Zhang, Guancheng Ye, Chengming Li, Xiping Hu},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/CAS-SIAT-XinHai/CPsyExam}}
+}
 ```
